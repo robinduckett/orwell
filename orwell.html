@@ -49,7 +49,17 @@
           _('pause').addEventListener('click', ticker_pause, false);
         }
         
+        if (_('align').attachEvent) {
+          _('align').attachEvent("onchange", text_align);
+        } else {
+          _('align').addEventListener('change', text_align, false);
+        }
+        
         ticker_start();
+      };
+      
+      var text_align = function() {
+        _('display').style.textAlign = _('align').value;
       };
       
       var ticker_pause = function() {
@@ -118,7 +128,7 @@
         border: 1px solid #000;
         width: 500px;
         height: 100px;
-        text-align: justify;
+        text-align: right;
       }
       
       #control {
@@ -129,7 +139,7 @@
         border-top: 0px;
       }
       
-      input {
+      input, select {
         margin-top: 5px;
         border: 1px solid #000;
         font-family: 'Georgia', serif;
@@ -193,6 +203,11 @@
       <br />
       Show <input type="input" name="chunk" value="5" size="1" id="chunk"> words at a time, 
       Read in <input type="input" name="readin" value="1" size="1" id="readin"> words at a time<br />
+      Align Text <select id="align">
+        <option value="left">left</option>
+        <option selected="selected" value="right">right</option>
+        <option value="justify">justify</option>
+      </select> <br />
     </div>
   </body>
 </html>
