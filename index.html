@@ -11,6 +11,9 @@
       
       Robin Duckett <http://www.twitter.com/robinduckett>
                     <http://www.github.com/robinduckett>
+                    
+      - Fixed duration as per boredguy8's instruction
+        boredguy8 <http://news.ycombinator.com/user?id=boredguy8>
       
       */
     
@@ -96,7 +99,7 @@
       };
       
       var ticker_start = function() {
-        _duration = 60 * 1000 / (parseInt(_('wpm').value));
+        _duration = (parseInt(_('readin').value) / parseInt(_('wpm').value)) * 60 * 1000;
         ticker_interval = setInterval(ticker_step, _duration);
       };
       
